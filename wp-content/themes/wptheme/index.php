@@ -1,9 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>WPT Theme Development</title>
+        <meta charset="utf-8">
+        <meta name = "viewport" content="width=device-width, initial-scale=1">
+    </head>
+</html>
 <?php 
     get_header();
 ?>
 
 <!-- Showing post -->
-
+<section>
+<?php 
+    wp_nav_menu( array(
+        'theme_location' => 'custom-menu',
+        'container' => 'nav',
+        'container_class' => 'custom-menu-class',
+        'menu_class'=> 'custom-menu-list',
+    ) );
+?>
 <?php 
 if(have_posts( )):
     while(have_posts(  )):
@@ -15,6 +31,8 @@ if(have_posts( )):
     endwhile;
 endif;
 ?>
+
+</section>
 
 <?php 
     get_footer();
