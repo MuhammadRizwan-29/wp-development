@@ -4,3 +4,21 @@ Author: Muhammad Rizwan
 Description: This is the basics layout to understand to learn WORDPRESS theme Development. 
 Version: 1.0.0
 */
+
+header {
+    padding: 1rem 0;
+    text-align: center;
+    background: green;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+
+footer{
+    padding: 1rem 0;
+    background-color: green;
+    text-align: center;
+    color: #fff;
+}

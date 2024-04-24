@@ -6,7 +6,7 @@
 
 <?php     get_header( ); ?>
 
-<article id="<?php the_ID(); ?>" <?php post_class(); ?>>
+<article id="<?php the_ID();?>" <?php post_class(); ?>>
     <?php the_title(); ?>
     <div>
         <?php 
