@@ -15,6 +15,19 @@ header {
     justify-content: flex-start;
 }
 
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+}
+
+.main__sidebar {
+    display: flex;
+    align-items: self-start;
+    justify-content: flex-start;
+    flex-direction: column;
+}
 
 footer{
     padding: 1rem 0;

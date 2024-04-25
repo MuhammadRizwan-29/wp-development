@@ -18,7 +18,8 @@
     }
     add_action( 'init', 'wpt_nav_menu');
 
-    // Provide Custom Support 
+    /* Provide Custom Support */
+    // --> Header
     function wpt_add_widget_support(){
         $args = array(
             // 'default-image' => get_template_directory_uri(  ) . 'img/default-image.jpg',
@@ -31,4 +32,37 @@
         add_theme_support('custom-header', $args);
     }
     add_action('after_setup_theme', 'wpt_add_widget_support');
+
+    // --> Logo
+    function wpt_logo_setup_widget(){
+        $args = array(
+            'height' => 100,
+            'width' => 400,
+            'flex-height' => true,
+            'flex-width' => true,
+            'header-text' => array('site-title', 'site-description'),
+            'unlink-homepage-logo' => true,
+        );
+        add_theme_support( 'custom-logo', $args );
+    }
+    add_action( 'after_setup_theme', 'wpt_logo_setup_widget' );
+
+    // --> Widgets
+    function wpt_widget_support(){
+        // Primary Sidebar Widget
+        register_sidebar(
+            array(
+                'name' => __('Primary Sidebar', 'theme_name'),
+                'id'   => 'sidebar-1',
+            )
+        );
+        // Secondary Sidebar Widget
+        register_sidebar(
+            array(
+                'name' => __('Secondary Sidebar', 'theme_name'),
+                'id'   => 'sidebar-2',
+            )
+        );
+    }
+    add_action('widgets_init', 'wpt_widget_support');
 ?>
