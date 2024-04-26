@@ -83,6 +83,48 @@
     }
 
     add_action('init', 'wpt_event_pt');
+    /** Generate Custom-Post-Type of Event Short Code */ 
+
+    function wpt_shortcode_event_cpt(){?>
+            <div class="event--post__data">
+            <h2 class="wpt_event--heading">Most Trending Topics</h2>
+            <div class="event--post__inner">
+                <?php 
+                    // Register our post-type here
+                    $event_post = new WP_Query(array(
+                        'post_type' => 'event',
+                        'post_per_page' => 3, // If call all post use -1
+                    ));
+                    
+                    while($event_post->have_posts(  )):
+                        $event_post->the_post(); 
+                        ?>
+                        <div class="wpt_single_event">
+                            <h1 class="wpt_single_event_heading">
+                                <a href="<?php the_permalink(); ?>">
+                                    <?php the_title(); ?>
+                                </a>
+                            </h1>
+                            <div class="wpt_event--meta">
+                                <span>
+                                    <b>Date:</b> <?php echo get_the_date(); ?>
+                                </span>
+                                <span>
+                                    <b>Author:</b><?php echo get_the_author(); ?>
+                                </span>
+                            </div>
+                            <div class="wpt_event_content">
+                                <?php the_excerpt();?>
+                            </div>
+                        </div>
+                    <?php	
+                    endwhile;
+                ?>
+            </div>
+            </div>
+        <?php
+    }
+    add_shortcode( 'event_cpt_shortcode', 'wpt_shortcode_event_cpt' );
 
     /** Generate the short code */ 
     function wpt_plugin_shortcode($params){
