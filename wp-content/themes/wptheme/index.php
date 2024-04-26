@@ -77,7 +77,9 @@ endif;
 	</div>
 </div>
 <!-- end of Event CUSTOM POST TYPE -->
-
+<?php 
+	do_shortcode('[wptshortcode]');
+ ?>
 <?php 
     get_footer();
 ?>
