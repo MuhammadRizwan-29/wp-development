@@ -92,6 +92,25 @@ a:hover{
     justify-content: flex-start;
     flex-direction: column;
 }
+/* Whether API Data */
+.wpt_wheather--info {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 2rem 0rem;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+.city--wheather {
+    max-width: 300px;
+    background: green;
+    border-top-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    padding: 2rem;
+    outline: 1px solid green;
+    outline-offset: 5px;
+}
+/* end of Whether API Data */
 
 footer{
     padding: 1rem 0;
