@@ -83,4 +83,15 @@
     }
 
     add_action('init', 'wpt_event_pt');
+
+    /** Generate the short code */ 
+    function wpt_plugin_shortcode($params){
+        $values = shortcode_atts(array(
+            'name' => "WPT Admin",
+            'class' => "WPT Theme"
+        ), $params
+    );
+    echo "Name: " . $values['name'] . " Class:" . $values['class'];
+    }
+    add_shortcode( 'wptshortcode', 'wpt_plugin_shortcode' );
 ?>
