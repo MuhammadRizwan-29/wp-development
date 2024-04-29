@@ -19,6 +19,12 @@
     add_action( 'init', 'wpt_nav_menu');
 
     /* Provide Custom Support */
+	// --> Post Support 
+	function wpt_post_thumnail_support(){
+		add_theme_support('post-thumbnails');
+	}
+	add_action('after_setup_theme' , 'wpt_post_thumnail_support');
+	
     // --> Header
     function wpt_add_widget_support(){
         $args = array(

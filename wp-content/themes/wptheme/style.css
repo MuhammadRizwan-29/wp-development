@@ -154,3 +154,42 @@ footer{
 sidebar.main__sidebar {
 	flex: 1;
 }
+.wpt__post--template{
+	max-width: 1280px;
+	margin: 0 auto;
+}
+.wpt_post--featureimg {
+    width: 100%;
+    height: 600px;
+    padding-top: 2rem;
+}
+.wpt_post--featureimg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+/* Related Post */
+.wpt__related--post ul {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    list-style: none;
+    padding: 0;
+}
+.wpt__related--post ul li {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+.wpt__related--post h2 {
+    color: green;
+    text-align: center;
+}
+.wpt__related--post ul li img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 5px;
+}
