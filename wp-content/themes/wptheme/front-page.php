@@ -11,8 +11,8 @@
 ?>
 
 <!-- Showing post -->
-<section class="container">
-    <div class="main__content">
+<section class="container template__container">
+    <div class="main__content have_post--area">
 <?php 
 if(have_posts( )):
     while(have_posts(  )):
@@ -22,8 +22,17 @@ if(have_posts( )):
         <p><?php the_content( ); ?></p>
     <?php
     endwhile;
-endif;
 ?>
+	<div class="post__navigation-page">
+		<div class="older__post">
+			<?php next_posts_link('Older Post'); ?>
+		</div>
+		<div class="next__post">
+			<?php previous_posts_link('Newer Post'); ?>
+		</div>
+	</div>
+</div>
+<?php endif; ?>
 </div>
 <sidebar class="main__sidebar">
     <?php get_sidebar(); ?>
