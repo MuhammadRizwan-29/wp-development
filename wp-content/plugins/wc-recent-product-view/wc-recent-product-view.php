@@ -52,6 +52,7 @@ if( in_array('woocommerce/woocommerce.php',
                 //--> Classes
                 require(RVPS_PATH.'/classes/RVPS_setting_page.php');
                 require(RVPS_PATH.'/classes/RVPS_save_settings.php');
+                require(RVPS_PATH.'/classes/RVPS.php');
 
                 
                 //--> Hooks
@@ -59,7 +60,7 @@ if( in_array('woocommerce/woocommerce.php',
                 register_activation_hook( __FILE__, 'rvps_activation' );
                 /** Setting Page in ADMIN MENU */  
                 add_action( 'admin_menu', array(new RVPS_setting_page(), 'rvps_create_setting_page') );
-                
+                add_action( 'init', array(new RVPS(), 'rvps_start_session'), 10 );
                 add_action('admin_post_rvps_save_settings_fields', array(new RVPS_save_settings(), 'rvps_save_admin_field_settings'));
                 
                 //--> Shortcodes
