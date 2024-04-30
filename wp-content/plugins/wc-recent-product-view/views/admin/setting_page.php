@@ -12,8 +12,12 @@ function rvps_setting_page_cb(){
                 <h1><?php _e('WC Recently Viewed Products', 'rvps') ?></h1>
                 <table class="form-table">
                     <tbody>
-                        <form method="post" action="options.php" novalidate="novalidate">
-
+                        <form method="post" action="admin-post.php" novalidate="novalidate">
+                            <input type="hidden" name="action" value="rvps_save_settings_fields">
+                            <?php 
+                                wp_nonce_field('rvps_save_settings_fields_verify');
+                                $settings = get_option('rvps_settings');
+                            ?>
                             <!-- Label Wigdet -->
                             <tr>
                                 <th>
@@ -22,7 +26,7 @@ function rvps_setting_page_cb(){
                                     </label>
                                 </th>
                                 <td>
-                                    <input id="rvps_label" name="rvps_label" value="" type="text" required>
+                                    <input id="rvps_label" name="rvps_label" value="<?php echo isset($settings['rvps_label']) ? esc_attr($settings['rvps_label']) : ''; ?>" type="text" required>
                                 </td>
                             </tr>
 
@@ -34,7 +38,7 @@ function rvps_setting_page_cb(){
                                     </label>
                                 </th>
                                 <td>
-                                    <input id="rvps_numb_products" name="rvps_numb_products" value="" type="number" required>
+                                    <input id="rvps_numb_products" name="rvps_numb_products" value="<?php echo isset($settings['rvps_numb_products']) ? esc_attr($settings['rvps_numb_products']) : ''; ?>" type="number" required>
                                 </td>
                             </tr>
 
@@ -46,9 +50,10 @@ function rvps_setting_page_cb(){
                                     </label>
                                 </th>
                                 <td>
-                                    <input id="rvps_position" name="rvps_position" value="before_related_product" type="radio">
+                                    <input <?php checked(isset($settings['rvps_position']) && $settings['rvps_position'] == 'before_related_product', true); ?> id="rvps_position_before" name="rvps_position" value="before_related_product" type="radio">
                                     <span style="padding-right:20px;" ><?php _e('Before related products')?></span>
-                                    <input id="rvps_position" name="rvps_position" value="after_related_product" type="radio">
+
+                                    <input <?php checked(isset($settings['rvps_position']) && $settings['rvps_position'] == 'after_related_product', true); ?> id="rvps_position_after" name="rvps_position" value="after_related_product" type="radio">
                                     <span style="padding-right:20px;" ><?php _e('After related products')?></span>
                                 </td>
                             </tr> <!-- end of widget -->
@@ -61,7 +66,7 @@ function rvps_setting_page_cb(){
                                     </label>
                                 </th>
                                 <td>
-                                    <input id="rvps_in_shop_page" name="rvps_in_shop_page" value="enabled" type="checkbox">
+                                    <input <?php checked(isset($settings['rvps_in_shop_page']) && $settings['rvps_in_shop_page'] == 'enabled', true); ?> id="rvps_in_shop_page" name="rvps_in_shop_page" value="enabled" type="checkbox">
                                     <span><?php _e( 'Show', 'rvps' ); ?></span>
                                 </td>
                             </tr> <!-- end of widget -->
@@ -74,7 +79,7 @@ function rvps_setting_page_cb(){
                                     </label>
                                 </th>
                                 <td>
-                                    <input id="rvps_in_cart_page" name="rvps_in_cart_page" value="enabled" type="checkbox">
+                                    <input <?php checked(isset($settings['rvps_in_cart_page']) && $settings['rvps_in_cart_page'] == 'enabled', true); ?> id="rvps_in_cart_page" name="rvps_in_cart_page" value="enabled" type="checkbox">
                                     <span><?php _e( 'Show', 'rvps' ); ?></span>
                                 </td>
                             </tr> <!-- end of widget -->
