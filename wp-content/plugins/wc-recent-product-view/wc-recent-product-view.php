@@ -4,6 +4,7 @@
      * Description: Show those products which are viewed by the user in the woo-commerce plugin store.
      * Author: Muhammad Rizwan
      * Version: 1.0.0
+     * Text Domain: rvps
     */
 
 ?>
@@ -46,11 +47,14 @@ if( in_array('woocommerce/woocommerce.php',
             public function __construct(){
                 //--> Files
                 require(RVPS_PATH.'/includes/activation.php');
-
+                require(RVPS_PATH.'/views/admin/setting_page.php');
                 //--> Classes
-
+                require(RVPS_PATH.'/classes/RVPS_setting_page.php');
+                
                 //--> Hooks
                 register_activation_hook( __FILE__, 'rvps_activation' );
+                // add_action( 'admin_menu', array(new RVPS_setting_page(), 'rvps_setting_page_cb') );
+                add_action( 'admin_menu', array(new RVPS_setting_page(), 'rvps_create_setting_page') );
 
                 //--> Shortcodes
             }

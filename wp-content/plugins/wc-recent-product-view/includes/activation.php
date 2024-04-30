@@ -18,10 +18,10 @@ if(!function_exists('rvps_activation')){
             add_option( 'rvps_settings', array(
                 'rvps_label'            => 'Recently Viewed Products',
                 'rvps_numb_products'    => 4,
+                'rvps_position'         => 'after_related_product',
                 'rvps_in_shop_page'     => '',
                 'rvps_in_cart_page'     => 'enabled',
             ) );
         }
     }
-    add_action( );
 }
