@@ -29,6 +29,39 @@ if(!class_exists('RVPS')){
         /** Initialize Session for Login User */
         public function rvps_session_init(){
             $session_name = $this->rvps_session_name();
+            if(!isset($_SESSION[$session_name])){
+                $_SESSION[$session_name] = serialize (array());
+            }
+        }
+
+        /** Get Current User Sessions */
+        public function rvps_get_products(){
+            $session_name = $this->rvps_session_name();
+
+            if(!isset($_SESSION[$session_name])){
+                return false;
+            }
+
+            return unserialize($_SESSION[$session_name]);
+        }
+
+        /** Update User Session */
+        public function rvps_update_products(){
+            $session_name = $this->rvps_session_name();
+            if( !is_product() ){
+                return false;
+            }
+
+            $viewed_products = $this->rvps_get_products();
+            // $updated_products = array();
+            if( !in_array( get_the_ID(), $viewed_products ) ){
+                $viewed_products[] = get_the_ID(  );
+            } else {
+                $current_product_key = array_search( get_the_ID(), $viewed_products );
+                unset($viewed_products[$current_product_key]);
+                $viewed_products[] = get_the_ID(  );
+            }
+            $_SESSION[$session_name] = serialize( $viewed_products);
         }
     }
 }
