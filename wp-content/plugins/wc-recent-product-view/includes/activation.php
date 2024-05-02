@@ -14,7 +14,7 @@ if(!defined('ABSPATH')){
 if(!function_exists('rvps_activation')){
     function rvps_activation(){
         //--> Check if rvps_settings option not found
-        if(!get_option( 'rvps_srttings')){
+        if(!get_option( 'rvps_settings')){
             add_option( 'rvps_settings', array(
                 'rvps_label'            => 'Recently Viewed Products',
                 'rvps_numb_products'    => 4,

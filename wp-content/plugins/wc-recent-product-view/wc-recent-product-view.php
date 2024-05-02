@@ -48,13 +48,14 @@ if( in_array('woocommerce/woocommerce.php',
                 //--> Files
                 require(RVPS_PATH.'/includes/activation.php');
                 require(RVPS_PATH.'/views/admin/setting_page.php');
+                require(RVPS_PATH.'/views/front-end/rvps_products_view.php');
 
                 //--> Classes
                 require(RVPS_PATH.'/classes/RVPS_setting_page.php');
                 require(RVPS_PATH.'/classes/RVPS_save_settings.php');
                 require(RVPS_PATH.'/classes/RVPS.php');
+                require(RVPS_PATH.'/classes/RVPS_view.php');
 
-                
                 //--> Hooks
                 
                 /** Activation Hook */ 
@@ -68,7 +69,10 @@ if( in_array('woocommerce/woocommerce.php',
                 add_action( 'init', array(new RVPS(), 'rvps_start_session'), 10 );
                 add_action( 'init', array(new RVPS(), 'rvps_session_init'), 15 );
                 add_action( 'init', array(new RVPS(), 'rvps_update_products'));
-        
+
+                /** Display View at different positions */
+                add_action( 'woocommerce_after_single_product_summary', array(new RVPS_view(), 'rvps_show_after_related_products'), 21);
+                add_action( 'woocommerce_after_single_product_summary', array(new RVPS_view(), 'rvps_show_before_related_products'), 19);
                 
                 //--> Shortcodes
 
@@ -78,4 +82,5 @@ if( in_array('woocommerce/woocommerce.php',
     }
 
 }
+
 ?>

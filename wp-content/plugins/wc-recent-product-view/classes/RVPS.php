@@ -4,9 +4,9 @@
  * 
 */
 
-if(!defined('ABSPATH')){
-    die("don't access.");
-}
+// if(!defined('ABSPATH')){
+//     die("don't access.");
+// }
 
 if(!class_exists('RVPS')){
     class RVPS{
