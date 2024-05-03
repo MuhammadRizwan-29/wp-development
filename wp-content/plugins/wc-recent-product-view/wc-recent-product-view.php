@@ -49,6 +49,7 @@ if( in_array('woocommerce/woocommerce.php',
                 require(RVPS_PATH.'/includes/activation.php');
                 require(RVPS_PATH.'/views/admin/setting_page.php');
                 require(RVPS_PATH.'/views/front-end/rvps_products_view.php');
+                require(RVPS_PATH.'/shortcodes/rvps.php');
 
                 //--> Classes
                 require(RVPS_PATH.'/classes/RVPS_setting_page.php');
@@ -77,7 +78,7 @@ if( in_array('woocommerce/woocommerce.php',
                 add_action( 'woocommerce_cart_collaterals', array(new RVPS_view(), 'rvps_show_in_cart_page'), 20);
                 
                 //--> Shortcodes
-
+                add_shortcode( 'rvps', 'rvps_shortcode' );
             }
         }
         $RVPS_core = new RVPS_core();
