@@ -39,6 +39,38 @@ if(!class_exists('RVPS_view')){
             }
         }
         
+        public function rvps_show_in_shop_page(){
+            $rvps_settings = get_option('rvps_settings');
+
+            if(!isset($rvps_settings['rvps_in_shop_page'])){
+                return;
+            }
+
+            if( $rvps_settings['rvps_in_shop_page'] !== 'enabled'){
+                return;
+            }
+
+            if( rvps_products_view() ){
+                rvps_products_view();
+            }
+        }
+
+        public function rvps_show_in_cart_page(){
+            $rvps_settings = get_option('rvps_settings');
+
+            if(!isset($rvps_settings['rvps_in_cart_page'])){
+                return;
+            }
+
+            if( $rvps_settings['rvps_in_cart_page'] !== 'enabled'){
+                return;
+            }
+
+            if( rvps_products_view() ){
+                rvps_products_view();
+            }
+        }
+
         /*
         public function rvps_show_after_related_products(){
             $rvps_settings = get_option('rvps_settings');

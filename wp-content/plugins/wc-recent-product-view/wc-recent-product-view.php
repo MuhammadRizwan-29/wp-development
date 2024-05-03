@@ -73,6 +73,8 @@ if( in_array('woocommerce/woocommerce.php',
                 /** Display View at different positions */
                 add_action( 'woocommerce_after_single_product_summary', array(new RVPS_view(), 'rvps_show_after_related_products'), 21);
                 add_action( 'woocommerce_after_single_product_summary', array(new RVPS_view(), 'rvps_show_before_related_products'), 19);
+                add_action( 'woocommerce_after_shop_loop', array(new RVPS_view(), 'rvps_show_in_shop_page'), 15);
+                add_action( 'woocommerce_cart_collaterals', array(new RVPS_view(), 'rvps_show_in_cart_page'), 20);
                 
                 //--> Shortcodes
 
