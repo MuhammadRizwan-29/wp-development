@@ -12,12 +12,50 @@ if(!defined('ABSPATH')){
     die ('You have no access.');
 }
 
+if(file_exists( dirname(__FILE__) . '/vendor/autoload.php')){
+    require_once dirname(__FILE__) . '/vendor/autoload.php';
+}
+
 if(!class_exists('WPMRPlugin')){
     
     class WPMRPlugin{
         /** Constructor of Class*/ 
+
+        public $plugin;
+
        function  __construct(){
             add_action('init', array($this, 'book_cpt') );
+            $this->plugin = plugin_basename( __FILE__ );
+        }
+
+        function register(){
+
+            /** Hooks & Filters */ 
+            add_action( 'admin_enqueue_scripts', array($this, 'enqueue') );
+
+            add_action( 'admin_menu', array($this, 'add_admin_pages') );
+
+            add_filter( "plugin_action_links_$this->plugin" , array($this, 'settings_link') );
+
+        }
+
+        /** Register at Admin Menu*/ 
+        public function add_admin_pages(){
+            add_menu_page( 'WPMR Plugin', 'WPMR', 'manage_options', 'wpmr_plugin', array($this, 'admin_index'), 'dashicons-store', 110);
+        }
+
+        /** Plugin Settings Links */
+        public function settings_link($links){
+            /** Add Custom Setting Link */
+            $settings_link = '<a href="admin.php?page=wpmr_plugin">Settings</a>';
+            array_push($links, $settings_link);
+            return $links;
+        }
+
+        /** Setting Template */ 
+        public function admin_index(){
+            /** Require Template */
+            require_once plugin_dir_path( __FILE__ ) .'templates/admin.php';
         }
 
         /** Activation */ 
@@ -28,7 +66,7 @@ if(!class_exists('WPMRPlugin')){
 
             /* Flush rewrite rules */
             flush_rewrite_rules(  );
-            
+
         }
 
         /** Deactivation */ 
@@ -61,9 +99,16 @@ if(!class_exists('WPMRPlugin')){
                 'menu_icon' => 'dashicons-book-alt',
             ) );
         }
+
+        /** Custom Script Added */
+        function enqueue(){
+            wp_enqueue_style( 'wpmrstyle', plugins_url( '/assets/style.css', __FILE__ ) );
+            wp_enqueue_script( 'wpmrsript', plugins_url( '/assets/script.js', __FILE__ ) );
+        }
     }
 
     $wpmrplugin = new WPMRPlugin();
+    $wpmrplugin->register();
 }
 
 /** Hooks */ 

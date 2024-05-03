@@ -1,0 +1,19 @@
+{
+    "name": "m.rizwan/wpmr-plugin",
+    "description": "WPMR Plugin Development",
+    "type": "project",
+    "license": "GPL",
+    "autoload": {
+        "psr-4": {
+            "MRizwan\\WpmrPlugin\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "MuhammadRizwan-29",
+            "email": "engrrizwanjamali@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
