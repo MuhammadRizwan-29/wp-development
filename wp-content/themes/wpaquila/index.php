@@ -3,7 +3,7 @@
 
     get_header();
 ?>
-<body></body>
+
 
 <?php 
     
