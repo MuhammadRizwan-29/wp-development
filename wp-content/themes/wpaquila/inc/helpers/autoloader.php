@@ -57,9 +57,7 @@ function autoloader( $resource = '' ) {
         $resource_path = sprintf( '%s/inc/%s/%s.php', untrailingslashit( AQUILA_DIR_PATH ), $directory, $file_name );
     }
 
-    $is_valid_file = validate_file( $resource_path );
-
-    if ( ! empty( $resource_path ) && file_exists( $resource_path ) && ( 0 === $is_valid_file || 2 === $is_valid_file ) ) {
+    if ( ! empty( $resource_path ) && file_exists( $resource_path ) && ( 0 === validate_file( $resource_path ) || 2 === validate_file( $resource_path ) ) ) {
         require_once( $resource_path );
     }
 }
