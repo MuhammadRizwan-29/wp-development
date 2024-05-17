@@ -20,6 +20,6 @@
                 wp_body_open();
             }  
         ?>
-        <header>
+        <header class="header-main">
             <?php get_template_part('/templates/header/nav' ); ?>
         </header>
