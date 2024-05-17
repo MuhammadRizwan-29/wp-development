@@ -15,7 +15,12 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">Brand</a>
+                <!-- <a class="navbar-brand" href="#">Brand</a> -->
+                <?php
+                    if(function_exists( 'the_custom_logo' )){
+                        the_custom_logo(  );
+                    }
+                ?>
                 </div>
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
