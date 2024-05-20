@@ -14,8 +14,10 @@ class AQUILA_THEME {
 
     protected function __construct() {
         // Load classes or initialize functionality here
-        $this->setup_hooks();
         Assets::get_instance();
+        Menus::get_instance();
+        
+        $this->setup_hooks();
     }
 
     protected function setup_hooks() {
