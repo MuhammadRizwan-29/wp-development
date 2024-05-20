@@ -11,6 +11,7 @@ $header_menu_id = $menu_class->get_menu_id('aquila-header-menu');
 $header_menu = wp_get_nav_menu_items($header_menu_id);
 ?>
 <nav class="navbar navbar-default">
+    <div class="container">
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
@@ -95,5 +96,7 @@ $header_menu = wp_get_nav_menu_items($header_menu_id);
                 </li>
             </ul>
         </div><!-- /.navbar-collapse -->
+        
     </div><!-- /.container-fluid -->
+    </div>
 </nav>
