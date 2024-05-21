@@ -22,24 +22,38 @@
                         }
                     ?>
                     <div class="row">
-                    <?php 
-                        while ( have_posts() ) : the_post();
-                        ?>
-                        <div class="col-md-4 mb-4">
-                            <div class="card h-100">
-                                <?php if ( has_post_thumbnail() ) : ?>
-                                    <img src="<?php echo get_the_post_thumbnail_url(); ?>" class="card-img-top" alt="<?php the_title_attribute(); ?>">
-                                <?php endif; ?>
-                                <div class="card-body">
-                                    <h5 class="card-title"><?php the_title(); ?></h5>
-                                    <p class="card-text"><?php the_excerpt(); ?></p>
-                                    <a href="<?php the_permalink(); ?>" class="btn btn-primary">Read more</a>
+                        <?php
+                            $index = 0;
+                            $no_of_columns = 3;
+
+                            while(have_posts(  )):the_post(  );
+
+                                if(0 === $index % $no_of_columns){
+                                    ?>
+                                    <div class="col-lg-4 col-md-6 col-sm-12">
+                                    <?php
+                                }?>
+
+                                <h3>
+                                    <?php the_title(); ?>
+                                </h3>
+
+                                <div>
+                                    <?php the_excerpt(  ); ?>
                                 </div>
-                            </div>
-                        </div>
-                        <?php   
-                        endwhile;
-                    ?>
+
+                                <?php
+
+                                $index++;
+
+                                if( 0 !== $index && 0 === $index % $no_of_columns ){
+                                    ?>
+
+                                    </div>
+                                    <?php
+                                }
+                            endwhile;
+                         ?>
                     </div>
                 </div>
                 <?php
