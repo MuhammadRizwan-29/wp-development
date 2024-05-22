@@ -6,3 +6,8 @@
 * Description: Adding blog, one-column, custom-background, custom-logo
 * Version: 1.0.0
 */
+
+img{
+    width: 100%;
+    height: auto;
+}

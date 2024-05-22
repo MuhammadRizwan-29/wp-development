@@ -32,18 +32,9 @@
                                     ?>
                                     <div class="col-lg-4 col-md-6 col-sm-12">
                                     <?php
-                                }?>
+                                }
 
-                                <h3>
-                                    <?php the_title(); ?>
-                                </h3>
-
-                                <div>
-                                    <?php the_excerpt(  ); ?>
-                                </div>
-
-                                <?php
-
+                                get_template_part( '/templates/content' );
                                 $index++;
 
                                 if( 0 !== $index && 0 === $index % $no_of_columns ){
@@ -58,11 +49,7 @@
                 </div>
                 <?php
             } else {
-                ?>
-                <div class="container">
-                    <p><?php esc_html_e( 'No posts found.', 'wpaquila' ); ?></p>
-                </div>
-                <?php
+                get_template_part( '/templates/no-content' );
             }
         ?>
     </main>
