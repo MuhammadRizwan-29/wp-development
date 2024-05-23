@@ -62,6 +62,8 @@ class AQUILA_THEME {
         add_theme_support( 'wp-block-styles' );
         
         add_theme_support( 'align-wide' );
+
+        add_image_size('feature-thumbnail', 350, 233, true );
     }
 
 }
