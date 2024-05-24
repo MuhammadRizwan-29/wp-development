@@ -82,3 +82,38 @@ function aquila_the_excerpt( $trim_character_count = 0 ){
 
     echo $excerpt . '[...]';
 }
+
+function aquila_excerpt_more( $more = '' ){
+
+    if ( ! is_single(  ) ){
+        $more = sprintf(
+            '<button class="mt-4 btn btn-info"><a class="aquila-read-more text-white" href="%1$s">%2$s</a></button>',
+            get_the_permalink( get_the_ID() ),
+            __('Read more', 'aquila')
+        );
+    }
+
+    return $more;
+}
+
+function aquila_pagination(){
+    
+    $allowed_tags = [
+        'span' => [
+            'class' => []
+        ],
+        'a' => [
+            'class' => [],
+            'href' => [],
+        ]
+    ];
+    
+    $args = [
+        'before_page_number' => '<span class="btn border border-secondary mr-2 mb-2">',
+        'after_page_number' => '</span>',
+    ];
+
+    printf('<nav class="aquila-pagination clearfix">%s</nav>', 
+        wp_kses( paginate_links( $args ), $allowed_tags )
+    );
+}

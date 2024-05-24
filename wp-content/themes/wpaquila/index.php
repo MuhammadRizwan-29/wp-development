@@ -51,6 +51,7 @@
             } else {
                 get_template_part( '/templates/no-content' );
             }
+            aquila_pagination();
         ?>
     </main>
 </div>

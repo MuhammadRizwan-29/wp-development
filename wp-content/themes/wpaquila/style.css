@@ -19,3 +19,27 @@ img{
 .nav li:hover .dropdown-menu:not(.show){
     display: block;
 }
+
+/* Pagination on SINLE PAGE */
+.aquila-paginations {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5rem 0;
+    gap: 0.2rem;
+}
+.aquila-paginations :where(.prev, .next) {
+    flex: 1;
+}
+.pagination-link {
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    display: block;
+    text-wrap: nowrap;
+}
+.aquila-paginations :where(.next) span {
+    text-align: right;
+}
+.pagination-link:hover a{
+    text-decoration: none;
+}
