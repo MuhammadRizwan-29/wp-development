@@ -10,10 +10,14 @@
 
 <div class="primary">
     <main id="main" class="site-main mt-5" role="main">
-        <?php 
-            if ( have_posts() ) {
+        
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-8 col-sm-12">
+                <?php 
+                if ( have_posts() ) {
                 ?>
-                <div class="container">
+                <div class="post-wrap">
                     <?php 
                         if ( is_home() && ! is_front_page() ) {
                             ?>
@@ -27,11 +31,13 @@
                         while(have_posts(  )): the_post();
                             get_template_part( 'templates/content' );
                         endwhile;
-                    ?>
-                    
+
+                } else {
+                    get_template_part( '/templates/no-content' );
+                }
+                ?>                
                 </div>
-                <div class="container">
-                    <div class="aquila-paginations">
+                <div class="aquila-paginations">
                         <div class="prev">
                             <span class="pagination-link">
                                 <?php 
@@ -46,13 +52,13 @@
                                 ?>
                             </span>
                         </div>
-                    </div>
                 </div>
-                <?php
-            } else {
-                get_template_part( '/templates/no-content' );
-            }
-        ?>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-12">
+                <?php get_sidebar(); ?>
+            </div>
+        </div>
+    </div>
     </main>
 </div>
 

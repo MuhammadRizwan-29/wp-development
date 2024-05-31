@@ -16,6 +16,8 @@ class AQUILA_THEME {
         // Load classes or initialize functionality here
         Assets::get_instance();
         Menus::get_instance();
+        Meta_Boxes::get_instance();
+        Sidebars::get_instance();
         
         $this->setup_hooks();
     }
